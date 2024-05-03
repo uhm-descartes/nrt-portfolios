@@ -1,10 +1,11 @@
 ---
 # URL to techfolio with JSON resume bio
 #
-# Instructors here
-Instructors:
+# Faculty and Saff here
+"Faculty and Staff":
+  - philipmjohnson.org
   - dport96.github.io
-  - rnkazman.github.io
+
 # TA's here
 TAs:  
   - mzhangitm352.github.io/
