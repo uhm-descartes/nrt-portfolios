@@ -49,3 +49,34 @@
 </div>
 
 {% endfor %}
+
+<script>
+// Fetch the list of forks of the NRTechfolio repository and use to generate URLs for the potyfolios of the members of the NRT DESCARTES community
+  fetch('https://api.github.com/repos/uhm-descartes/NRTechfolio/forks')
+    .then(
+      function (response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+
+        // Examine the text in the response
+        response.text().then(function (rdata) {
+          var data;
+          try {
+            data = JSON.parse(rdata);
+          } catch (e) {
+
+          }
+          // generate the portfolio URLs
+        for(let i in data){
+          console.log(`${data[i].owner.login}.github.io/NRTechfolio/`);
+        }
+        });
+      }
+    )
+    .catch(function (err) {
+      console.log('Fetch Error :-S for {{ profileURL }}', err);
+    });
+</script>
