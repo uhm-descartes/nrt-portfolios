@@ -40,7 +40,6 @@ document.write(`<head>`);
 
 document.write(`</head>`);
 
-
   fetch('https://{{ profileURL }}/_data/bio.json')
     .then(
       function (response) {
@@ -81,17 +80,13 @@ document.write(`</head>`);
           }
 // https://philipmjohnson.org/philipmjohnson/philipmjohnson.github.io/raw/main/img/pmj-headshot.png
 // https://github.com/philipmjohnson/philipmjohnson.github.io/raw/main/img/pmj-headshot.png
-          if (el.hostname != 'image' && data.basics.picture.includes('https://') && !data.basics.picture.includes('error')) {
-            document.getElementById('{{ profileURL }}_picture').src = el.href;
-            console.log(data);
-
-          }
-          else if(el.hostname === 'image' && data.basics.picture.includes('data:image') ) {
+          if (el.hostname === 'image' || data.basics.picture.includes('https://') || data.basics.picture.includes('error')) {
             document.getElementById('{{ profileURL }}_picture').src = data.basics.picture;
           }
           else if(!data.basics.picture.includes('error')) {
             document.getElementById('{{ profileURL }}_picture').src = `${el.protocol}//{{ member_json_bio }}/${data.basics.picture}`;
           }
+
           // data.basics.picture.replace(/^http:\/\//i, 'https://');
           converter = new showdown.Converter();
           document.getElementById('{{ profileURL }}_summary').innerHTML = converter.makeHtml(data.basics.summary);
