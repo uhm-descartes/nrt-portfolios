@@ -1,5 +1,6 @@
 <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.1/dist/showdown.min.js"></script>
 <script src="{{ site.baseurl }}/js/bundle.js"></script>
+
 <script>
   // const dJSON = require('dirty-json');
   // const RJSON = require('relaxed-json');
@@ -33,7 +34,6 @@
   */
 </script>
 
-</script>
 
 <h1 style="text-align: center;background-color:forestgreen;color: white;"> NRT DESCARTS Community</h1>
 {% for group in site.data.members %}
@@ -50,8 +50,10 @@
 
 {% endfor %}
 
+
 <script>
 // Fetch the list of forks of the NRTechfolio repository and use to generate URLs for the potyfolios of the members of the NRT DESCARTES community
+/*
   fetch('https://api.github.com/repos/uhm-descartes/NRTechfolio/forks')
     .then(
       function (response) {
@@ -79,4 +81,5 @@
     .catch(function (err) {
       console.log('Fetch Error :-S for {{ profileURL }}', err);
     });
+*/
 </script>

@@ -1,5 +1,7 @@
 {% assign profileURL = member_json_bio | remove: "https://" | remove "http://" %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/json5/dist/index.min.js"></script>
+
 <script>
  if(document.getElementById('{{ profileURL }}') == null) {
 document.write(`<head>`);
@@ -54,7 +56,7 @@ document.write(`</head>`);
         response.text().then(function (rdata) {
           var data;
           try {
-            data = JSON.parse(rdata);
+            data = JSON5.parse(rdata);
           } catch (e) {
             data = {
               "basics": {
@@ -89,7 +91,7 @@ document.write(`</head>`);
 
           // data.basics.picture.replace(/^http:\/\//i, 'https://');
           converter = new showdown.Converter();
-          document.getElementById('{{ profileURL }}_summary').innerHTML = converter.makeHtml(data.basics.summary);
+          document.getElementById('{{ profileURL }}_summary').innerHTML = converter.makeHtml(data.basics.summary).slice(0,255);
           document.getElementById('{{ profileURL }}_interests').innerHTML = data.interests.map(x => x.name).join(', ');
           // document.getElementById('{{ profileURL }}_website').href = data.basics.website;
         });
